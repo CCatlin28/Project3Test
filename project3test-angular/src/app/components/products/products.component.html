@@ -1,0 +1,78 @@
+<div class="body">
+
+    <app-navbar></app-navbar>
+    <br>
+    <div>
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-2">
+                    <br>
+                    <br>
+                    <br>
+                    <!-- <aside>
+                <div class="alert alert-secondary" role="alert">
+                    <h4 class="alert-heading">Sort by:</h4>
+                    <select class="custom-select">
+                        <option selected>Open this select menu</option>
+                        <option value="Title">Title</option>
+                        <option value="Author">Author</option>
+                        <option value="Price">Price</option>
+                      </select>
+                  </div>
+            </aside> -->
+
+                </div>
+
+                <div class="col-8">
+                    <div class="scrollable card">
+                        <h1 class="text-white font-weight-bold bigger-text">Books</h1>
+                        <div id="outer">
+                            <div class="inner">
+                                <h3>Sort by: </h3>
+                            </div>
+                            <div class="inner"><button class="btn" id="sort" [appSort]="allBooks" data-order="desc" data-name="title">Title A-Z</button></div>
+                            <div class="inner"><button class="btn" id="sort" [appSort]="allBooks" data-order="desc" data-name="author">Author A-Z</button></div>
+                        </div>
+                        <table class="table table-dark table-borderless tablesorter" id="booksTable">
+
+                            <thead class="thead-dart">
+                                <tr>
+                                    <th scope="col">Book Cover</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">ISBN</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let book of allBooks">
+                                    <td><img src="{{ book.image }}" class="img-fluid img-thumbnail" width="200" height="500" alt=""></td>
+                                    <td class="col-title" id="{{ book.title }}">{{ book.title }}</td>
+                                    <td class="col-author" id="{{ book.author }}">{{ book.author }}</td>
+                                    <td class="col-isbn" id="{{ book.isbn }}">{{ book.isbn }}</td>
+
+                                    <td class="col-price">${{ book.price }}</td>
+                                    <td>
+                                        <button class="btn btn-info" (click)="viewBook(book)">Learn More</button>
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" (click)="addBook(book)">Add to Library</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- <div class="col-3">
+            <br>
+        </div> -->
+
+            </div>
+        </div>
+    </div>
+
+</div>

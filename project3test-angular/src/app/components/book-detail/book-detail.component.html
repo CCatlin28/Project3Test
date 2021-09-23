@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="body">
+
+    <div class="container text-white">
+        <br>
+        <button class="btn btn-secondary" routerLink="/products">Back to Products</button>
+
+        <br>
+        <br>
+        <h1>Title: {{ book.title }} </h1>
+        <h3>Author: {{ book.author }}</h3>
+        <h4>ISBN: {{ book.ISBN }} </h4>
+        <br>
+        <img src="{{ book.image }}" class="img-fluid img-thumbnail" width="200" height="500" alt="">
+        <hr class="dotted">
+        <h2>Summary</h2>
+        <p> {{ book.summary }} </p>
+        <hr class="dotted">
+
+        <h4> Price: {{ book.price.displayValue | currency:'EUR' }} / {{ book.price.displayValue * 1.18 | currency:'USD' }}</h4>
+
+        <br>
+        <button class="btn btn-primary" (click)="addBook(book)">Add to my Library</button>
+        <br>
+        <br>
+    </div>
+
+
+</div>

@@ -1,0 +1,65 @@
+.body {
+    width: 100%;
+    background-image: url("/assets/img/photo-1507842217343-583bb7270b66.jfif");
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bigger-text {
+    font-size: 64px;
+}
+
+h1 {
+    margin-left: 8px;
+}
+
+h3 {
+    margin-left: 30px;
+    /* display: inline-block; */
+    margin-right: 30px;
+}
+
+#sort {
+    margin-left: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.inner {
+    display: inline-block;
+    color: white;
+    font: bold;
+}
+
+#outer {
+    width: 1000px;
+}
+
+.card {
+    background-color: #49231c;
+}
+
+#booksTable {
+    background-color: #49231c;
+}
+
+.btn {
+    color: white;
+    background-color: black;
+    border-color: white;
+}
+
+.btn:hover {
+    background-color: gray;
+}
+
+.scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 750px;
+}

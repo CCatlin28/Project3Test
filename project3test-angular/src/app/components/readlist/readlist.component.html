@@ -1,0 +1,43 @@
+<div class="body">
+    <app-navbar></app-navbar>
+    <section class="row-section">
+        <div class="container">
+            <div class="row" style="text-shadow: 2px 2px #000000;">
+                <h2 class="text-center text-light" *ngIf="userLoggedIn"><span>Reading Listing</span> For {{ currentUser.firstName }} {{ currentUser.lastName }}</h2>
+                <h2 class="text-center text-light" *ngIf="!userLoggedIn"><span>Reading Listing</span>For Guest</h2>
+            </div>
+            <div class="col-md-10 offset-md-1 row-block scrollable">
+                <ul id="sortable">
+                    <li *ngFor="let readlist of readlists">
+                        <div class="media" *ngIf="userLoggedIn && userHasReadlist">
+                            <div class="media-left align-self-center">
+                                <img src="{{ readlist.book.image }}" alt="Book cover image">
+                            </div>
+                            <div class="media-body">
+                                <h4>{{ readlist.book.title }}</h4>
+                                <h6>Author: {{ readlist.book.author }}</h6>
+                                <p>{{ readlist.book.summary }}</p>
+                            </div>
+                            <div class="media-right align-self-center">
+                                <button (click)="removeBook(readlist)" id="remove">Remove</button>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="media" *ngIf="userLoggedIn && !userHasReadlist">
+                        <div class="media-body" style="text-align: center;">
+                            <h4>You can add books to your readlist from the store page!</h4>
+                            <img class="linebreak" src="/assets/img/linebreakImg.png">
+                        </div>
+                    </div>
+                    <div class="media" *ngIf="!userLoggedIn">
+                        <div class="media-body" style="text-align: center;">
+                            <h4>Please login to view your readlist.</h4>
+                            <img class="linebreak" src="/assets/img/linebreakImg.png">
+                            <a href="/login">Login</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,72 @@
+
+    <aside>
+        <div class="alert alert-secondary" role="alert">
+            <h4 class="alert-heading">Sort by:</h4>
+            <select class="custom-select">
+                <option selected>Open this select menu</option>
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+                <option value="price">Price</option>
+              </select>
+          </div>
+    </aside>
+
+    <script>
+        $(document).ready(function() {
+
+        function sortByNumber(rows, selector, ascending) {
+            rows.sort(function(a, b) {
+                var numberA = parseInt($(selector, a).text(), 10);
+            var numberB = parseInt($(selector, b).text(), 10);
+            if (ascending)
+                    return numberA - numberB;
+            else
+                return numberB - numberA;
+            });
+            
+            return rows;
+        }
+        
+        function sortByText(rows, selector, ascending) {
+            rows.sort(function(a, b) {
+                var textA = $(selector, a).text();
+            var textB = $(selector, b).text();
+            if (ascending)
+                return textA.localeCompare(textB);
+            else
+                    return textB.localeCompare(textA);
+            });
+            
+            return rows;
+        }
+
+        function sortAllBy(field) {
+            var rows = $('table tbody tr').toArray();
+            
+            switch (field) {
+            case 'Title':
+                rows = sortByText(rows, 'td.col-title', true);
+                break;
+            case 'Author':
+                rows = sortByText(rows, 'td.col-author', true);
+                break;
+            case 'Price':
+                rows = sortByText(rows, 'td.col-price', true);
+                break;
+            default:
+                console.error('Undefined sort field ' + field);
+                break;
+            }
+            
+            for (var i = 0; i < rows.length; i++) {
+                $('table tbody').append(rows[i]);
+            }
+        }
+        
+        $('select').on('change', function() {
+            sortAllBy(this.value);
+        });
+    });
+    </script>
+
+

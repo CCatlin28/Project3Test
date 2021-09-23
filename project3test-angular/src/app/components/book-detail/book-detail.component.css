@@ -1,0 +1,22 @@
+.body {
+    background-color: #49231c;
+    /* background: black; */
+}
+.bigger-text {
+    font-size: 64px;
+}
+
+.btn{
+    color: white;
+    background-color: black;
+    border-color: white;
+}
+
+.btn:hover {
+    background-color: gray;
+}
+
+/* container-bg {
+    background-color: rgba(0, 0, 0, 0.61);
+    background: black;
+} */

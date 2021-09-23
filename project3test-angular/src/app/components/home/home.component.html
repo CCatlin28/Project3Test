@@ -1,0 +1,27 @@
+<body>
+    <app-navbar></app-navbar>
+    <app-header></app-header>
+    <div id="bg">
+        <div class="container">
+            <h1>Check out our featured selection!</h1>
+            <br>
+            <div class="row">
+
+                <div *ngFor="let book of books.slice(12,15)" class="col-md-4">
+                    <div class="card">
+                        <img src="{{ book.image }}" class="img-fluid img-thumbnail" alt="">
+                        <div class="card-body">
+                            <p class="card-txt" id="title">{{ book.title }}</p>
+                            <div class="btn-group">
+                                <button (click)="onButtonClick(book)" class="btn btn-sm btn-outline-secondary">Learn
+                                    More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</body>

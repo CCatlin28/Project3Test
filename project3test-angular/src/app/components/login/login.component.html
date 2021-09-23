@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div style="background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(https://npr.brightspotcdn.com/dims4/default/57802ac/2147483647/strip/true/crop/5616x3744+0+0/resize/880x587!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F61%2Fcd%2F6f68d7354b678bdc5514ef4858a9%2Fshutterstock-108584921.jpg)"
+    class="holder bg">
+    <div class="container">
+        <div class="col-md-7">
+            <form #loginForm="ngForm" (submit)="onClick(username.value, password.value)">
+                <div class="card">
+                    <h1>Login</h1>
+                    <br>
+                    <div class="form-group">
+                        <label class="labell">Username</label>
+                        <input type="text" name="username" id="username" #username ngModel class="form-control"
+                            placeholder="Enter Username" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label1">Password</label>
+                        <input type="password" name="password" id="password" #password ngModel class="form-control"
+                            placeholder="Enter Password" required />
+                    </div>
+                    <br>
+                    <button type="submit" class="btn" [disabled]="!loginForm.form.valid">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
