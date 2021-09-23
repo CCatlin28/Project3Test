@@ -36,9 +36,10 @@ h3 {
     font: bold;
 }
 
-#outer {
-    width: 1000px;
-}
+/* #outer {
+    min-width: 1000px;
+    
+} */
 
 .card {
     background-color: #49231c;
