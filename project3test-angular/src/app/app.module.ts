@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
 
 // routing module
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SortDirective } from './directive/sort.directive';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -39,14 +41,16 @@ import { SortDirective } from './directive/sort.directive';
     PageNotFoundComponent,
     BookDetailComponent,
     SidebarComponent,
-    SortDirective
+    SortDirective,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
