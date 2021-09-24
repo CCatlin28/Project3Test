@@ -1,0 +1,49 @@
+<div>
+
+<div style="padding: 10px; float: left;">
+    <div>
+        <h3 style="color: white;">Sort by: </h3>
+    </div>
+    <select class="menu form-control" name="sort" id="sort">
+        <option value="Relevence">Relevence</option>
+        <option value="Newest">Newest</option>
+        <option value="TitleAtoZ">Title A-Z</option>
+        <option value="TitleZtoA">Title Z-A</option>
+        <option value="AuthorAtoZ">Author A-Z</option>
+        <option value="AuthorZtoA">Author Z-A</option>
+    </select>
+   
+</div>
+<div style="padding: 10px; float: right;">
+    <div>
+        <h3 style="color: white;">Search by: </h3>
+    </div>
+    <div style="float: left;">
+    <form action="">
+        <div class="form-group" style="float: left;">
+            <div style="margin: 5px; float: left;">
+                <label for="searchType" style="color: white;">Search Type</label>
+            </div>
+            <div class="inner" style="margin: 5px; float: left;">
+                <select class="form-control menu"
+                    id="searchType">
+                    <option>Title</option>
+                    <option>Author</option>
+                    <option>Subject/Category</option>
+                    <option>ISBN</option>
+                </select>
+            </div>
+        </div>
+        <div style="float: left; margin: 5px;">
+            <input type="text" class="form-control" id="parameters" placeholder="Search">
+        </div>
+        <div style="float: left; margin: 5px;">
+            <span class="inner"><button class="btn" id="search">Search</button></span>
+
+        </div>
+    </form>
+    </div>
+    <div style="margin: 5px; float: left;"><button class="btn" id="advancedSearch">Advanced Search</button></div>
+</div>
+</div>
+
