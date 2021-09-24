@@ -1,4 +1,10 @@
 
+<select (change)="sortBy($event)" class="custom-select" id="filter-select" style="border: 1px solid rgb(38, 40, 48);background-color: #0b0f16;color: darkgrey;" required>
+  <option value="">Sort</option>
+  <option value="1">Ascending</option>
+  <option value="2">Descending</option>
+</select>
+
 <table style="width: 80%; margin: auto;" class="table table-bordered table-dark" >
     <thead>
       <tr>
@@ -11,18 +17,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor ="let book of books.items | sortBy: 'asc'">
-        <!-- <th scope="row">{{ i + 1 }}</th> -->
-        <!-- <td *ngIf="book.volumeInfo.hasOwnProperty('imageLinks')"><img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt=""></td>
+      <tr *ngFor ="let book of books.items; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td *ngIf="book.volumeInfo.hasOwnProperty('imageLinks')"><img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt=""></td>
           <ng-template>
             <td>Not avaliable</td>
-          </ng-template> -->
+          </ng-template>
         <td>{{ book.volumeInfo.title }}</td>
-        <!-- <td>{{ book.volumeInfo.authors }}</td>
+        <td>{{ book.volumeInfo.authors }}</td>
         <td *ngIf="book.saleInfo.hasOwnProperty('listPrice'); else elseBlockPrice ">${{ book.saleInfo.listPrice.amount }}</td>
         <ng-template #elseBlockPrice>
           <td>Out of Stock</td>
         </ng-template>
+
         
         
 
@@ -33,7 +40,7 @@
         </ng-template>
         <ng-template #elseBlock>
             <td>No Data</td>
-        </ng-template> -->
+        </ng-template>
       </tr>
     </tbody>
   </table>
