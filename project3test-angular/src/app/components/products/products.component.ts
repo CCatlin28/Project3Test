@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.getWhatever().subscribe((data) => {
+    this.dataService.getBookHomePage().subscribe((data) => {
       this.items = data.items;
       console.log(this.items);
   })

@@ -1,7 +1,7 @@
 .body {
     width: 100%;
     background-image: url("/assets/img/photo-1507842217343-583bb7270b66.jfif");
-    position: fixed;
+    /* position: fixed; */
     padding: 0;
     margin: 0;
     top: 0;
