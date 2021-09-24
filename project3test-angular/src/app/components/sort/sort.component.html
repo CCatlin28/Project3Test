@@ -1,0 +1,39 @@
+
+<table style="width: 80%; margin: auto;" class="table table-bordered table-dark" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book Cover</th>
+        <th scope="col">Book name</th>
+        <th scope="col">Author name</th>
+        <th scope="col">Price</th>
+        <th scope="col">ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let book of books.items | sortBy: 'asc'">
+        <!-- <th scope="row">{{ i + 1 }}</th> -->
+        <!-- <td *ngIf="book.volumeInfo.hasOwnProperty('imageLinks')"><img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt=""></td>
+          <ng-template>
+            <td>Not avaliable</td>
+          </ng-template> -->
+        <td>{{ book.volumeInfo.title }}</td>
+        <!-- <td>{{ book.volumeInfo.authors }}</td>
+        <td *ngIf="book.saleInfo.hasOwnProperty('listPrice'); else elseBlockPrice ">${{ book.saleInfo.listPrice.amount }}</td>
+        <ng-template #elseBlockPrice>
+          <td>Out of Stock</td>
+        </ng-template>
+        
+        
+
+
+        <td *ngIf="book.volumeInfo.hasOwnProperty('industryIdentifiers'); then thenBlock else elseBlock"></td>
+        <ng-template #thenBlock>
+            <td *ngIf="book.volumeInfo.industryIdentifiers[0].type === 'ISBN_13'; else elseBlock">{{ book.volumeInfo.industryIdentifiers[0].identifier }}</td>
+        </ng-template>
+        <ng-template #elseBlock>
+            <td>No Data</td>
+        </ng-template> -->
+      </tr>
+    </tbody>
+  </table>
