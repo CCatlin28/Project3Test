@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent},
+  { path: 'products/:search/:searchType/:pageNumber', component: ProductsComponent},
+  { path: 'products/:search/:searchType', component: ProductsComponent},
   { path: 'products/:ISBN', component: BookDetailComponent},
   // { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   // { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },

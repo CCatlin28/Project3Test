@@ -43,8 +43,8 @@ export class DataService {
   }
 
   //A title must be passed to this method to be able to search by title
-  public getBooksByTitle(title: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_TITLE + title);
+  public getBooksByTitle(title: string, pageNumber: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_TITLE + title + '/' + pageNumber);
   }
 
   // Author name needs to be passed into method, it may be a partial
