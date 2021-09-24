@@ -7,6 +7,7 @@ import { ReadlistComponent } from './components/readlist/readlist.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SortComponent } from './components/sort/sort.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   // { path: 'products/:catName/:catId', component: SubCategoryComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'sort', component: SortComponent },
   { path: 'readlist', component: ReadlistComponent },
   // { path: '**', component: PageNotFoundComponent }
   { path: '**', component: PageNotFoundComponent }

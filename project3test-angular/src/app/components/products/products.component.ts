@@ -38,5 +38,4 @@ export class ProductsComponent implements OnInit {
   public addBook(book: any) {
     this.readlistService.addReadlistEntry(book);
   }
-
 }

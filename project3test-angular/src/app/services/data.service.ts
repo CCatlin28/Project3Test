@@ -18,7 +18,7 @@ export class DataService {
   private ENDPOINTS = {
 
     BOOKS_URL: 'https://bookstore.docs.apiary.io/#reference/books/databooks/get',//deprecated
-    BOOKS_HOME_URL: 'https://www.googleapis.com/books/v1/volumes?q=startIndex=0&maxResults=20&orderBy=newest', // fills page by top 20 newest books
+    BOOKS_HOME_URL: 'https://www.googleapis.com/books/v1/volumes?q=startIndex=0&maxResults=40&orderBy=newest', // fills page by top 20 newest books
     BOOKS_BY_TITLE: 'https://www.googleapis.com/books/v1/volumes?q=intitle:', //Can search by full names or partial names, MUST USE FULL WORDS TO SEARCH EX) Searching the book "The Blessings" as "Blessing" will not work, you need to search the word "Blessings"
     BOOKS_BY_AUTHOR: 'https://www.googleapis.com/books/v1/volumes?q=inauthor:', //+ author name,
     BOOKS_BY_ISBN: 'https://www.googleapis.com/books/v1/volumes?q=isbn: ', //Leave space after colon,Can search by 10 digit or 13 digit API

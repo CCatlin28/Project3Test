@@ -18,13 +18,17 @@ import { RegisterComponent } from './components/register/register.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReadlistComponent } from './components/readlist/readlist.component';
+import { NgpSortModule } from 'ngp-sort-pipe';
+
 
 import { ProductsComponent } from './components/products/products.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SortDirective } from './directive/sort.directive';
+import { SortComponent } from './components/sort/sort.component';
 import { SearchComponent } from './components/search/search.component';
+
 
 
 @NgModule({
@@ -42,7 +46,9 @@ import { SearchComponent } from './components/search/search.component';
     BookDetailComponent,
     SidebarComponent,
     SortDirective,
+    SortComponent,
     SearchComponent
+
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,9 @@ import { SearchComponent } from './components/search/search.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgpSortModule
     CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
