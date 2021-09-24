@@ -57,6 +57,10 @@ export class DataService {
     return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_ISBN + isbn);
   }
 
+  public getWhatever(): Observable<any> {
+    return this.http.get<any>('https://www.googleapis.com/books/v1/volumes?q=subject:science%20fiction%22retailPrice%22/4&orderBy=newest')
+  }
+
   /**
    * Book retrieval SHOULD BE THE FIRST BOOK IN THE JSON,
    * but double check the JSON to be safe.
@@ -86,6 +90,10 @@ export class DataService {
    */
   public getBooksByGenre(genre: string): Observable<any> {
     return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_GENRE + genre);
+  }
+
+  public getNewByGenre(genre: string, page: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_GENRE + genre + '/' + page + '&orderBy=newest')
   }
 
   /**
