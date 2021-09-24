@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
     })
     }
     else if(this.searchType == null){
-      this.dataService.getWhatever().subscribe((data) => {
+      this.dataService.getBookHomePage().subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
     })
@@ -85,7 +85,7 @@ export class ProductsComponent implements OnInit {
 //       console.log(this.items);
 //   })
 
-//   }
+  }
 
   public addBook(book: any) {
     this.readlistService.addReadlistEntry(book);
