@@ -41,6 +41,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     if(this.search == null){
       this.dataService.getBookHomePage().subscribe((data) => {
         this.items = data.items;
@@ -78,10 +79,15 @@ export class ProductsComponent implements OnInit {
     })
 
     }
-  }
+
+//     this.dataService.getBookHomePage().subscribe((data) => {
+//       this.items = data.items;
+//       console.log(this.items);
+//   })
+
+//   }
 
   public addBook(book: any) {
     this.readlistService.addReadlistEntry(book);
   }
-
 }

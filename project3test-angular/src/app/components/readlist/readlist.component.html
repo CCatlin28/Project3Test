@@ -2,9 +2,9 @@
     <app-navbar></app-navbar>
     <section class="row-section">
         <div class="container">
-            <div class="row" style="text-shadow: 2px 2px #000000;">
-                <h2 class="text-center text-light" *ngIf="userLoggedIn"><span>Reading Listing</span> For {{ currentUser.firstName }} {{ currentUser.lastName }}</h2>
-                <h2 class="text-center text-light" *ngIf="!userLoggedIn"><span>Reading Listing</span>For Guest</h2>
+            <div class="row" >
+                <h2 class="text-center text-light" style="text-shadow: 2px 2px #000000;" *ngIf="userLoggedIn"><span>Reading Listing</span></h2><h2 class="text-center text-light" *ngIf="userLoggedIn"> For {{ currentUser.firstName }} {{ currentUser.lastName }}</h2>
+                <h2 class="text-center text-light" style="text-shadow: 2px 2px #000000;" *ngIf="!userLoggedIn"><span>Reading Listing</span></h2><h2 class="text-center text-dark" *ngIf="!userLoggedIn">For Guest</h2>
             </div>
             <div class="col-md-10 offset-md-1 row-block scrollable">
                 <ul id="sortable">

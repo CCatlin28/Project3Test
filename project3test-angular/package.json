@@ -21,6 +21,7 @@
     "ajv": "^6.9.1",
     "bootstrap": "4.6",
     "jquery": "^3.6.0",
+    "ngp-sort-pipe": "0.0.4",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

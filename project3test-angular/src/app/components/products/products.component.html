@@ -1,14 +1,15 @@
 <div class="body">
-    <app-navbar></app-navbar>
-    <div>
-        <div class="container-fluid">
-            <div class="row">
+<app-navbar></app-navbar>
 
+<div>
+    <div class="container-fluid">
+        <!-- <div class="row"> -->
+        <!-- 
                 <div class="col-2">
                     <br>
                     <br>
                     <br>
-                    <!-- <aside>
+                    <aside>
                 <div class="alert alert-secondary" role="alert">
                     <h4 class="alert-heading">Sort by:</h4>
                     <select class="custom-select">
@@ -18,85 +19,106 @@
                         <option value="Price">Price</option>
                       </select>
                   </div>
-            </aside> -->
+            </aside>
 
-                </div>
-                
-                <div class="col-12" style="margin: auto;">
-                    <div class="scrollable card">
-                        <app-search></app-search>
-                        <table class="table table-dark table-borderless tablesorter" id="booksTable">
-                            
-                            <thead class="thead-dart">
-                                <tr>
-                                    <th scope="col">Book Cover</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Author</th>
-                                    <th scope="col">ISBN</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let book of items"> <!--Book list composed of search results + page number-->
-                                    <td ng-container *ngIf= "book.volumeInfo.imageLinks == null; else elseImage">thumbnail unavailable</td>
-                                    <ng-template #elseImage><img src="{{ book.volumeInfo.imageLinks.thumbnail }}" class="img-fluid img-thumbnail" width="200" height="500" alt=""></ng-template>
-                            
-                                    <td class="col-title">{{ book.volumeInfo.title }}</td>
-                    
-                                    <td class="col-author" ng-container *ngIf="book.volumeInfo.authors == null else elseBlock1">Author not found</td>
-                                    <ng-template #elseBlock1>{{ book.volumeInfo.authors }}</ng-template>
-                                    
-                                    <td class="col-isbn" ng-container *ngIf="book.volumeInfo.industryIdentifiers == null; else elseIfOther">isbn not available</td>
-                                    <ng-template #elseIfOther>
-                                        <td class="col-isbn"  ng-container *ngIf="book.volumeInfo.industryIdentifiers[0].type == 'OTHER'; else elseIf2">isbn 13 not available</td>
-                                    </ng-template>  
-                                    <ng-template #elseIf2>
-                                        <td class="col-isbn"  ng-container *ngIf="book.volumeInfo.industryIdentifiers[0].type == 'ISBN_13'; else elseIf">{{ book.volumeInfo.industryIdentifiers[0].identifier }}</td>
-                                    </ng-template>
-                                    <ng-template #elseIf>
-                                    <td class="col-isbn" ng-container *ngIf="book.volumeInfo.industryIdentifiers[1].type == 'ISBN_13'; else elseBlock">{{ book.volumeInfo.industryIdentifiers[1].identifier }}</td>
-                                    </ng-template>
-                                    <ng-template #elseBlock>isbn 13 is not available for this selection</ng-template>
+                </div> -->
+        <br>
 
-                                    
-                                    <td ng-container *ngIf="book.saleInfo == null; else elsePrice1">price unavailable</td>
-                                    <ng-template #elsePrice1>
-                                        <td class="col-price" *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'; else elsePrice2">item not for sale </td>
-                                    </ng-template>
-                                    <ng-template #elsePrice2>
-                                        <td class="col-price" *ngIf="book.saleInfo.retailPrice.amount"> $ {{ book.saleInfo.retailPrice.amount }} </td>
-                                    </ng-template>
+        <div class="col-8 card" style="margin: auto;">
 
-                
+            <h1 class="text-white font-weight-bold bigger-text">Books</h1>
+            <!-- <div id="outer"> -->
+            <app-search></app-search>
+        </div>
+        <br><br>
 
-                                    <td>
-                                        <button class="btn btn-info" >Learn More</button>
+        <div class="col-8" style="margin: auto;">
+            <div class="scrollable card">
+                <table class="table table-dark table-borderless tablesorter" id="booksTable">
 
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-primary">Add to Library</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <thead class="thead-dart">
+                        <tr>
+                            <th scope="col">Book Cover</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">ISBN</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of items">
+                            <!--Book list composed of search results + page number-->
+                            <td ng-container *ngIf="book.volumeInfo.imageLinks == null; else elseImage">
+                                thumbnail unavailable</td>
+                            <ng-template #elseImage><img src="{{ book.volumeInfo.imageLinks.thumbnail }}"
+                                    class="img-fluid img-thumbnail" width="200" height="500" alt="">
+                            </ng-template>
 
-                </div>
-                <!-- <div class="col-3">
+                            <td class="col-title">{{ book.volumeInfo.title }}</td>
+
+                            <td class="col-author" ng-container *ngIf="book.volumeInfo.authors == null else elseBlock1">
+                                Author not found</td>
+                            <ng-template #elseBlock1>{{ book.volumeInfo.authors }}</ng-template>
+
+                            <td class="col-isbn" ng-container
+                                *ngIf="book.volumeInfo.industryIdentifiers == null; else elseIfOther">isbn not
+                                available</td>
+                            <ng-template #elseIfOther>
+                                <td class="col-isbn" ng-container
+                                    *ngIf="book.volumeInfo.industryIdentifiers[0].type == 'OTHER'; else elseIf2">
+                                    isbn 13 not available</td>
+                            </ng-template>
+                            <ng-template #elseIf2>
+                                <td class="col-isbn" ng-container
+                                    *ngIf="book.volumeInfo.industryIdentifiers[0].type == 'ISBN_13'; else elseIf">
+                                    {{ book.volumeInfo.industryIdentifiers[0].identifier }}</td>
+                            </ng-template>
+                            <ng-template #elseIf>
+                                <td class="col-isbn" ng-container
+                                    *ngIf="book.volumeInfo.industryIdentifiers[1].type == 'ISBN_13'; else elseBlock">
+                                    {{ book.volumeInfo.industryIdentifiers[1].identifier }}</td>
+                            </ng-template>
+                            <ng-template #elseBlock>isbn 13 is not available for this selection</ng-template>
+
+
+                            <td ng-container *ngIf="book.saleInfo == null; else elsePrice1">price unavailable
+                            </td>
+                            <ng-template #elsePrice1>
+                                <td class="col-price"
+                                    *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'; else elsePrice2">item
+                                    not for sale </td>
+                            </ng-template>
+                            <ng-template #elsePrice2>
+                                <td class="col-price" *ngIf="book.saleInfo.retailPrice.amount"> $ {{
+                                    book.saleInfo.retailPrice.amount }} </td>
+                            </ng-template>
+
+
+
+                            <td>
+                                <button class="btn btn-info">Learn More</button>
+
+                            </td>
+                            <td>
+                                <button class="btn btn-primary">Add to Library</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- <div class="col-3">
             <br>
         </div> -->
 
-            </div>
-        </div>
+        <!-- </div> -->
     </div>
-    <br>
+</div>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
+
 </div>

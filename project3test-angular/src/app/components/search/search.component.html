@@ -1,19 +1,27 @@
 <div>
-    <div style="padding: 10px; float: left;">
-        <div>
-            <h3 style="color: white;">Sort by: </h3>
-        </div>
-        <span style="margin: 5px;"><button class="btn" id="sort" data-name="title">Title
-                A-Z</button></span>
-        <span class="inner" style="margin: 5px;"><button class="btn" id="sort" data-name="author">Author
-                A-Z</button></span>
+
+<div style="padding: 10px; float: left;">
+    <div>
+        <h3 style="color: white;">Sort by: </h3>
     </div>
-    <div style="padding: 10px; float: left;">
-        <div>
-            <h3 style="color: white;">Search by: </h3>
-        </div>
-        <div style="float: left;">
-           <form action="">
+
+
+    <select class="menu form-control" name="sort" id="sort">
+        <option value="Relevence">Relevence</option>
+        <option value="Newest">Newest</option>
+        <option value="TitleAtoZ">Title A-Z</option>
+        <option value="TitleZtoA">Title Z-A</option>
+        <option value="AuthorAtoZ">Author A-Z</option>
+        <option value="AuthorZtoA">Author Z-A</option>
+    </select>
+   
+</div>
+<div style="padding: 10px; float: right;">
+    <div>
+        <h3 style="color: white;">Search by: </h3>
+    </div>
+    <div style="float: left;">
+    <form action="">
                 <div class="form-group" style="float: left;">
                     <div style="margin: 5px; float: left;">
                         <label for="searchType" style="color: white;">Search Type</label>
@@ -36,9 +44,10 @@
 
                 </div>
             </form>
-        </div>
-        <div style="margin: 5px; float: left;"><button class="btn" id="advancedSearch">Advanced Search</button></div>
     </div>
-    </div>
+
+    <div style="margin: 5px; float: left;"><button class="btn" id="advancedSearch">Advanced Search</button></div>
+</div>
+</div>
 
 

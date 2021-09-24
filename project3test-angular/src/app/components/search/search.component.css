@@ -7,3 +7,9 @@
 .btn:hover{
     background-color: rgb(248, 233, 221);
 }
+
+.menu{
+    background-color: rgb(201, 161, 109); 
+    color: #49231c;
+    font-weight: bold;
+}
