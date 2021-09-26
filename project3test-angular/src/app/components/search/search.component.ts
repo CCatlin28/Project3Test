@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
   search: string = '';
   searchType: string = '';
+  sortType: string = '';
   
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.searchType = "title"
+    this.sortType = "Relevence"
   }
 
   Search(search: string, searchType: string){
@@ -22,5 +25,6 @@ export class SearchComponent implements OnInit {
   Reload(){
     window.location.reload();
   }
+
 
 }

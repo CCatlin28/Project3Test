@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProductsComponent } from './components/products/products.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SortComponent } from './components/sort/sort.component';
+import { AdvSearchComponent } from './components/adv-search/adv-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
@@ -23,8 +24,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sort', component: SortComponent },
   { path: 'readlist', component: ReadlistComponent },
+  { path: "advancesearch", component: AdvSearchComponent },
   // { path: '**', component: PageNotFoundComponent }
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
+  
 ];
 
 @NgModule({
