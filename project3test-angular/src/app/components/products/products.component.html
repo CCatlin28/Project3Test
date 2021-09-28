@@ -79,19 +79,19 @@
                 <table class="table table-dark table-borderless tablesorter" id="booksTable">
 
                     <thead class="thead-dart">
-                        <tr>
+                        <tr class="text-center">
                             <th scope="col">Book Cover</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">ISBN</th>
-                            <th scope="col">Price</th>
+                            <th (click)="sortByTitle()" scope="col">Title</th>
+                            <th (click)="sortByAuthor()" scope="col">Author</th>
+                            <th  scope="col">ISBN</th>
+                            <th (click)=" sortByPrice()" scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let book of items">
+                        <tr *ngFor="let book of items" class="text-center">
                             <!--Book list composed of search results + page number-->
                             <td ng-container *ngIf="book.volumeInfo.imageLinks == null; else elseImage">
-                                thumbnail unavailable</td>
+                                Image unavailable</td>
                             <ng-template #elseImage><img src="{{ book.volumeInfo.imageLinks.thumbnail }}"
                                     class="img-fluid img-thumbnail" width="200" height="500" alt="">
                             </ng-template>
@@ -103,12 +103,11 @@
                             <ng-template #elseBlock1>{{ book.volumeInfo.authors }}</ng-template>
 
                             <td class="col-isbn" ng-container
-                                *ngIf="book.volumeInfo.industryIdentifiers == null; else elseIfOther">isbn not
-                                available</td>
+                                *ngIf="book.volumeInfo.industryIdentifiers == null; else elseIfOther">ISBN not available</td>
                             <ng-template #elseIfOther>
                                 <td class="col-isbn" ng-container
                                     *ngIf="book.volumeInfo.industryIdentifiers[0].type == 'OTHER'; else elseIf2">
-                                    isbn 13 not available</td>
+                                    ISBN not available</td>
                             </ng-template>
                             <ng-template #elseIf2>
                                 <td class="col-isbn" ng-container

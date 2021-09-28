@@ -27,6 +27,10 @@ export class ProductsComponent implements OnInit {
   public pageNumber: any = 1;
   public index: any = 0;
 
+  public sortTitle:Boolean=true;
+  public sortAuthor:Boolean=true;
+  public sortPrice:Boolean=true;
+
 
   constructor(private bookService: BooksService, private readlistService:
     ReadlistService, private router: Router, private dataService: DataService, private route: ActivatedRoute) { 
@@ -45,7 +49,12 @@ export class ProductsComponent implements OnInit {
     
     this.dataService.getBookHomePage().subscribe((data) => {
       this.items = data.items;
-      console.log(this.items);
+      console.log(this.items);this.items.forEach((book:any) => {
+        if(!(book.saleInfo.hasOwnProperty('listPrice'))){
+          console.log("Does not exist ")   
+          Object.assign(book.saleInfo,{listPrice:{amount:10.99}})
+        }        
+      })
     })
    
   
@@ -155,5 +164,72 @@ export class ProductsComponent implements OnInit {
     // console.log(this.searchType)
     // this.searchByAuthor(m[1], m[0]);
   }
+  
+  
+  
+  // Sort By Title
+  sortByTitle(){
+    console.log("Inside sortByTitle() function");
+    if (this.sortTitle == true){
+      console.log("sortAsc = " +this.sortTitle);
+      this.items.sort(function(a:any , b:any): any{
+        if (a.volumeInfo.title.toLowerCase() < b.volumeInfo.title.toLowerCase())
+        return -1;
+      })
+      this.sortTitle = false;
+     }
+    else if(this.sortTitle == false){
+      console.log("sortAsc = " +this.sortTitle);
+      this.items.sort(function(a:any , b:any): any{
+        if (a.volumeInfo.title.toLowerCase() > b.volumeInfo.title.toLowerCase())
+        return -1;
+      })
+      this.sortTitle = true;
+    }
+   }
+
+   // Sort By Author
+   sortByAuthor(){
+    console.log("Inside sortByAuthor() function");
+    if (this.sortAuthor == true){
+      console.log("sortAsc = " +this.sortAuthor);
+      this.items.sort(function(a:any , b:any): any{
+        if (a.volumeInfo.authors[0].toLowerCase() < b.volumeInfo.authors[0].toLowerCase())
+        return -1;
+      })
+      this.sortAuthor = false;
+     }
+    else if(this.sortAuthor == false){
+      console.log("sortAsc = " +this.sortAuthor);
+      this.items.sort(function(a:any , b:any): any{
+        if (a.volumeInfo.authors[0].toLowerCase() > b.volumeInfo.authors[0].toLowerCase())
+        return -1;
+      })
+      this.sortAuthor = true;
+    }
+   }
+
+   // Sort By Price
+   sortByPrice(){
+    console.log("Inside sortByPrice() function");    
+    if (this.sortPrice == true){
+      console.log("sortAsc = " +this.sortPrice);
+      this.items.sort(function(a:any , b:any): any{
+        if (a.saleInfo.listPrice.amount < b.saleInfo.listPrice.amount )
+        return -1;
+      })
+      this.sortPrice = false;
+     }
+    else if(this.sortPrice == false){
+      console.log("sortAsc = " +this.sortPrice);
+      this.items.sort(function(a:any , b:any): any{
+        if (a.saleInfo.listPrice.amount > b.saleInfo.listPrice.amount)
+        return -1;
+      })
+      this.sortPrice = true;
+    }
+
+   }
+
 
 }
