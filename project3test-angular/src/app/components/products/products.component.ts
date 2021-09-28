@@ -47,48 +47,7 @@ export class ProductsComponent implements OnInit {
       console.log(this.items);
     })
    
-  //   if(this.search == null){
-  //     this.dataService.getBookHomePage().subscribe((data) => {
-  //       this.items = data.items;
-  //       console.log(this.items);
-  //   })
-  //   }
-  //   else if(this.searchType == null){
-  //     this.dataService.getBookHomePage().subscribe((data) => {
-  //       this.items = data.items;
-  //       console.log(this.items);
-  //   })
-  //   }
-  //   else if(this.searchType == "title"){
-  //     this.dataService.getBooksByTitle(this.search, this.pageNumber).subscribe((data) => {
-  //       this.items = data.items;
-  //       console.log(this.items);
-  //   })
-  //   }
-
-  //   else if(this.searchType == "author"){
-  //       this.searchByAuthor(this.searchType, this.search);
-  //       this.dataService.getBooksByAuthor(this.search).subscribe((data) => {
-  //       this.items = data.items;
-  //       console.log(this.items);
-  //   })
-  //   }
-  //   else if(this.searchType == "subject"){
-  //     this.dataService.getBooksByGenre(this.search).subscribe((data) => {
-  //       this.items = data.items;
-  //       console.log(this.items);
-  //   })
-
-  //   }else if(this.search == "isbn"){
-  //     this.dataService.getBooksByISBN(this.search).subscribe((data) => {
-  //       this.items = data.items;
-  //       console.log(this.items);
-  //   })
-  // }
-//     this.dataService.getBookHomePage().subscribe((data) => {
-//       this.items = data.items;
-//       console.log(this.items);
-//   })
+  
 }
 
 
@@ -110,8 +69,20 @@ export class ProductsComponent implements OnInit {
         return -1;
       })
     }
+    else if(selection === '3'){
+      this.items.sort(function(a:any , b:any): any{
+        if (a.volumeInfo.authors[0].toLowerCase() < b.volumeInfo.authors[0].toLowerCase())
+        return -1;
+      })
+    }
+    else if(selection === '4'){
+      this.items.sort(function(a:any , b:any): any{
+        if (a.volumeInfo.authors[0].toLowerCase() > b.volumeInfo.authors[0].toLowerCase())
+        return -1;
+      })
+    }
     else{
-    
+    this.Search(this.search, this.searchType)
       // this.ngOnInit();
     }
   }
