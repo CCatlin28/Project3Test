@@ -53,7 +53,7 @@ export class DataService {
   }
 
   //Can search by 10 or 13 digit isbn
-  public getBooksByISBN(isbn: number): Observable<any> {
+  public getBooksByISBN(isbn: string): Observable<any> {
     return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_ISBN + isbn);
   }
 

@@ -64,3 +64,9 @@ h3 {
     overflow-x: hidden;
     max-height: 750px;
 }
+
+.menu{
+    background-color: rgb(201, 161, 109); 
+    color: #49231c;
+    font-weight: bold;
+}

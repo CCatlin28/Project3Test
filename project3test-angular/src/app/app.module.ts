@@ -27,8 +27,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SortDirective } from './directive/sort.directive';
-import { SortComponent } from './components/sort/sort.component';
-import { SearchComponent } from './components/search/search.component';
 import { AdvSearchComponent } from './components/adv-search/adv-search.component';
 
 
@@ -48,8 +46,6 @@ import { AdvSearchComponent } from './components/adv-search/adv-search.component
     BookDetailComponent,
     SidebarComponent,
     SortDirective,
-    SortComponent,
-    SearchComponent,
     AdvSearchComponent
 
   ],

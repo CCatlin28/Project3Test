@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit {
   public books: any;
   public items: any;
   public search: any;
+  public sort: any;
   public searchType: any;
   public newPage: any;
   public pageNumber: any = 1;
@@ -38,6 +39,8 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchType="title"
+    this.sort="Relevence"
     
     this.dataService.getBookHomePage().subscribe((data) => {
       this.items = data.items;
@@ -108,16 +111,17 @@ export class ProductsComponent implements OnInit {
       })
     }
     else{
+    
       // this.ngOnInit();
     }
   }
 
 
   
-  doSearch(event: Event){
-    let searchArr :any = event;
-    let search = searchArr[0];
-    let searchType = searchArr[1];
+  Search(search: string, searchType: string){
+    // let searchArr :any = event;
+    // let search = searchArr[0];
+    // let searchType = searchArr[1];
 
     if (searchType === "title"){
       console.log("title SEARCH")
