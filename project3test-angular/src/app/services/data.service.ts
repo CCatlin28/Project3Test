@@ -37,24 +37,23 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  //books Home, number of results can be tailored to UI
   public getBookHomePage() {
     return this.http.get<any>(this.ENDPOINTS.BOOKS_HOME_URL)
   }
 
   //A title must be passed to this method to be able to search by title
-  public getBooksByTitle(title: string, pageNumber: any): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_TITLE + title + '/' + pageNumber);
+  public getBooksByTitle(title: string, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_TITLE + title + '&startIndex=' + index + '&maxResults=20');
   }
 
   // Author name needs to be passed into method, it may be a partial
-  public getBooksByAuthor(authorName: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_AUTHOR + authorName);
+  public getBooksByAuthor(authorName: string, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_AUTHOR + authorName + '&startIndex=' + index + '&maxResults=20');
   }
 
   //Can search by 10 or 13 digit isbn
-  public getBooksByISBN(isbn: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_ISBN + isbn);
+  public getBooksByISBN(isbn: any, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_ISBN + isbn + '&startIndex=' + index + '&maxResults=20');
   }
 
  
@@ -86,8 +85,8 @@ export class DataService {
    *  allows to retrieve specific books to COMPUTERS / Artificial Intelligence / General books
    * @param genre
    */
-  public getBooksByGenre(genre: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_GENRE + genre);
+  public getBooksByGenre(genre: string, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_GENRE + genre + '&startIndex=' + index + '&maxResults=20');
   }
 
   public getNewByGenre(genre: string, page: any): Observable<any> {
