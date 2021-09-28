@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from 'src/app/services/books.service';
 import { DataService } from 'src/app/services/data.service';
@@ -38,109 +38,122 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // if(this.search == null){
-    //   this.dataService.getBookHomePage().subscribe((data) => {
-    //     this.items = data.items;
-    //     console.log(this.items);
-    // })
-    // }
-    // else if(this.searchType == null){
-    //   this.dataService.getBookHomePage().subscribe((data) => {
-    //     this.items = data.items;
-    //     console.log(this.items);
-    // })
-    // }
-    // else if(this.searchType == "title"){
-    //   this.dataService.getBooksByTitle(this.search, this.pageNumber).subscribe((data) => {
-    //     this.items = data.items;
-    //     console.log(this.items);
-    //     this.ngOnInit();
-    // })
-
-    //}
-    if(this.searchType == "author"){
-      console.warn("WAARRN")
-        this.searchByAuthor(this.searchType, this.search);
-        this.dataService.getBooksByAuthor(this.search).subscribe((data) => {
-        this.items = data.items;
-        console.log(this.items);
-    })
-
-    // }else if(this.searchType == "subject"){
-    //   this.dataService.getBooksByGenre(this.search).subscribe((data) => {
-    //     this.items = data.items;
-    //     console.log(this.items);
-    // })
-
-    // }else if(this.search == "isbn"){
-    //   this.dataService.getBooksByISBN(this.search).subscribe((data) => {
-    //     this.items = data.items;
-    //     console.log(this.items);
-    // })
-  }
-
     
+    this.dataService.getBookHomePage().subscribe((data) => {
+      this.items = data.items;
+      console.log(this.items);
+    })
+   
+  //   if(this.search == null){
+  //     this.dataService.getBookHomePage().subscribe((data) => {
+  //       this.items = data.items;
+  //       console.log(this.items);
+  //   })
+  //   }
+  //   else if(this.searchType == null){
+  //     this.dataService.getBookHomePage().subscribe((data) => {
+  //       this.items = data.items;
+  //       console.log(this.items);
+  //   })
+  //   }
+  //   else if(this.searchType == "title"){
+  //     this.dataService.getBooksByTitle(this.search, this.pageNumber).subscribe((data) => {
+  //       this.items = data.items;
+  //       console.log(this.items);
+  //   })
+  //   }
 
+  //   else if(this.searchType == "author"){
+  //       this.searchByAuthor(this.searchType, this.search);
+  //       this.dataService.getBooksByAuthor(this.search).subscribe((data) => {
+  //       this.items = data.items;
+  //       console.log(this.items);
+  //   })
+  //   }
+  //   else if(this.searchType == "subject"){
+  //     this.dataService.getBooksByGenre(this.search).subscribe((data) => {
+  //       this.items = data.items;
+  //       console.log(this.items);
+  //   })
+
+  //   }else if(this.search == "isbn"){
+  //     this.dataService.getBooksByISBN(this.search).subscribe((data) => {
+  //       this.items = data.items;
+  //       console.log(this.items);
+  //   })
+  // }
 //     this.dataService.getBookHomePage().subscribe((data) => {
 //       this.items = data.items;
 //       console.log(this.items);
 //   })
-  }
+}
 
 
   
 
   sortBy(event: Event){
+    let original = this.items;
     let selection = (event.target as HTMLSelectElement).value;
     if (selection === '1'){
-      this.books.items.sort(function(a:any , b:any): any{
+      console.log("ITEMS:" + this.items[0]);
+      this.items.sort(function(a:any , b:any): any{
         if (a.volumeInfo.title.toLowerCase() < b.volumeInfo.title.toLowerCase())
         return -1;
       })
     }
     else if(selection === '2'){
-      this.books.items.sort(function(a:any , b:any): any{
+      this.items.sort(function(a:any , b:any): any{
         if (a.volumeInfo.title.toLowerCase() > b.volumeInfo.title.toLowerCase())
         return -1;
       })
     }
     else{
-      this.ngOnInit()
+      // this.ngOnInit();
     }
   }
 
 
-  searchByAuthor(a : string, b: string){
-    console.log(this.search);
-    this.dataService.getBooksByAuthor(b).subscribe((data) => {
-      this.items = data.items;
-      console.log(this.items);
-    })
-  }
-
-  public addBook(book: any) {
-    this.readlistService.addReadlistEntry(book);
-  }
-
   
+  doSearch(event: Event){
+    let searchArr :any = event;
+    let search = searchArr[0];
+    let searchType = searchArr[1];
 
-  message(event: Event){
-     console.log (event);
-    // console.log("hi")
-    // this.search = this.route.snapshot.paramMap.get('search');
-    // console.log(this.search)
-    // this.newPage = this.route.snapshot.paramMap.get('pageNumber');
-    // console.log(this.newPage)
-    //this.searchType = this.route.snapshot.paramMap.get('searchType');
-    console.log(this.searchType)
-    this.searchByAuthor(this.searchType, this.search);
+    if (searchType === "title"){
+      console.log("title SEARCH")
+      this.dataService.getBooksByTitle(search, this.pageNumber).
+      subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+      })
+    }
 
-    // this.dataService.getBooksByAuthor(this.search).subscribe((data) => {
-    // this.items = data.items;
-    // console.log(this.items);
-    // })
-    // this.ngOnInit();
+    else if(searchType === "author"){
+      console.log("author SEARCH")
+      this.dataService.getBooksByAuthor(search).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+      })
+    }
 
+    else if(searchType === "subject"){
+      console.log("subject SEARCH")
+      this.dataService.getBooksByGenre(search).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+      })
+    }
+
+    else if(searchType == "isbn"){
+      console.log("ISBN SEARCH")
+      this.dataService.getBooksByISBN(search).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+      })
+    }
+    // console.log(m[0], m[1]);
+    // console.log(this.searchType)
+    // this.searchByAuthor(m[1], m[0]);
   }
+
 }

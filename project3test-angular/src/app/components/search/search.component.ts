@@ -19,10 +19,7 @@ export class SearchComponent implements OnInit {
   }
 
 
-  Search(search: string, searchType: string){
-    console.log("author name:" + search)
-    //this.router.navigate(['/products', search, searchType]);
-    
-    this.messageEvent.emit({search :search, searchType: searchType});
+  Search(search: string, searchType: string){  
+    this.messageEvent.emit([search,  searchType]);
   }
 }

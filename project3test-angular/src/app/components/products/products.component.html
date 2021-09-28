@@ -10,7 +10,7 @@
 
             <h1 class="text-white font-weight-bold bigger-text">Books</h1>
             <!-- <div id="outer"> -->
-            <app-search (messageEvent)="message($event)"></app-search>
+            <app-search (messageEvent)="doSearch($event)"></app-search>
           
         </div>
         <select (change)="sortBy($event)" class="custom-select" id="filter-select" >
