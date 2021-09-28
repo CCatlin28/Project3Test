@@ -106,6 +106,12 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  newSearch(){
+    this.pageNumber = 1;
+    this.index = 0;
+    this.Search(this.search, this.searchType)
+  }
+
 
   
   Search(search: string, searchType: string){
