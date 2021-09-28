@@ -60,7 +60,8 @@ import { SearchComponent } from './components/search/search.component';
     CommonModule
 
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
