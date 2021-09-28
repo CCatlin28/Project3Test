@@ -19,7 +19,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReadlistComponent } from './components/readlist/readlist.component';
-import { NgpSortModule } from 'ngp-sort-pipe';
 
 
 import { ProductsComponent } from './components/products/products.component';
@@ -57,7 +56,6 @@ import { SearchComponent } from './components/search/search.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgpSortModule
     CommonModule
 
   ],

@@ -24,6 +24,8 @@ export class DataService {
     BOOKS_BY_ISBN: 'https://www.googleapis.com/books/v1/volumes?q=isbn: ', //Leave space after colon,Can search by 10 digit or 13 digit API
     BOOKS_BY_GENRE: 'https://www.googleapis.com/books/v1/volumes?q=subject:', // Grab genre code
 
+    INDEX: '&maxResults=20&orderBy=newest',
+
 
     BOOK_FILTER: 'https://www.googleapis.com/books/v1/volumes?q=',  /* book title */
     AND_FILTER: '&filter=', //Can filter by ebooks, full, partial, free-ebooks, or paid-ebooks where the ? is located
@@ -43,18 +45,18 @@ export class DataService {
   }
 
   //A title must be passed to this method to be able to search by title
-  public getBooksByTitle(title: string, pageNumber: any): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_TITLE + title + '/' + pageNumber);
+  public getBooksByTitle(title: string, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_TITLE + title + '&startIndex=' + index + '&maxResults=20');
   }
 
   // Author name needs to be passed into method, it may be a partial
-  public getBooksByAuthor(authorName: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_AUTHOR + authorName);
+  public getBooksByAuthor(authorName: string, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_AUTHOR + authorName + '&startIndex=' + index + '&maxResults=20');
   }
 
   //Can search by 10 or 13 digit isbn
-  public getBooksByISBN(isbn: number): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_ISBN + isbn);
+  public getBooksByISBN(isbn: number, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_ISBN + isbn + '&startIndex=' + index + '&maxResults=20');
   }
 
  
@@ -86,8 +88,8 @@ export class DataService {
    *  allows to retrieve specific books to COMPUTERS / Artificial Intelligence / General books
    * @param genre
    */
-  public getBooksByGenre(genre: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_GENRE + genre);
+  public getBooksByGenre(genre: string, index: any): Observable<any> {
+    return this.http.get<any>(this.ENDPOINTS.BOOKS_BY_GENRE + genre + '&startIndex=' + index + '&maxResults=20');
   }
 
   public getNewByGenre(genre: string, page: any): Observable<any> {

@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit {
   public searchType: any;
   public newPage: any;
   public pageNumber: any = 1;
+  public index: any = 0;
 
 
   constructor(private bookService: BooksService, private readlistService:
@@ -49,31 +50,28 @@ export class ProductsComponent implements OnInit {
     })
     }
     else if(this.searchType == null){
-      this.dataService.getWhatever().subscribe((data) => {
-        this.items = data.items;
-        console.log(this.items);
-    })
+      
     }
     else if(this.searchType == "title"){
-      this.dataService.getBooksByTitle(this.search, this.pageNumber).subscribe((data) => {
+      this.dataService.getBooksByTitle(this.search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
     })
 
     }else if(this.searchType == "author"){
-      this.dataService.getBooksByAuthor(this.search).subscribe((data) => {
+      this.dataService.getBooksByAuthor(this.search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
     })
 
     }else if(this.searchType == "subject"){
-      this.dataService.getBooksByGenre(this.search).subscribe((data) => {
+      this.dataService.getBooksByGenre(this.search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
     })
 
     }else if(this.search == "isbn"){
-      this.dataService.getBooksByISBN(this.search).subscribe((data) => {
+      this.dataService.getBooksByISBN(this.search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
     })
@@ -85,9 +83,103 @@ export class ProductsComponent implements OnInit {
 //       console.log(this.items);
 //   })
 
-//   }
+ }
 
   public addBook(book: any) {
     this.readlistService.addReadlistEntry(book);
   }
+
+  // sortByAuthor() {
+  //   this.bookObj = this.bookObj.sort(function(a: any,b: any) {
+  //     return a.author > b.author
+  //   })
+  // }
+
+  public Decrement(){
+    if(this.index >= 20){
+    this.index -= 20;
+
+    if(this.search == null){
+      this.dataService.getBookHomePage().subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+    }
+    else if(this.searchType == null){
+      this.ngOnInit();
+    }
+    else if(this.searchType == "title"){
+      this.dataService.getBooksByTitle(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+
+    }else if(this.searchType == "author"){
+      this.dataService.getBooksByAuthor(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+
+    }else if(this.searchType == "subject"){
+      this.dataService.getBooksByGenre(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+
+    }else if(this.search == "isbn"){
+      this.dataService.getBooksByISBN(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+    }
+  }
+}
+
+  public Increment(){
+    this.index += 20;
+    if(this.search == null){
+      this.dataService.getBookHomePage().subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+    }
+    else if(this.searchType == null){
+      
+    }
+    else if(this.searchType == "title"){
+      this.dataService.getBooksByTitle(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+
+    }else if(this.searchType == "author"){
+      this.dataService.getBooksByAuthor(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+
+    }else if(this.searchType == "subject"){
+      this.dataService.getBooksByGenre(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+
+    }else if(this.search == "isbn"){
+      this.dataService.getBooksByISBN(this.search, this.index).subscribe((data) => {
+        this.items = data.items;
+        console.log(this.items);
+        this.ngOnInit();
+    })
+    }
+  }
+
 }
