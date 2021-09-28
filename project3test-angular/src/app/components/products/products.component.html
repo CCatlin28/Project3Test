@@ -69,9 +69,9 @@
       
         <!-- buttons for pageination -->
         <div class="row col-8" style="margin: auto;">
-            <button class="btn" style="float: right;">Previous</button>
-            <p style="padding: 5px; background-color: #49231c; float: right; color: rgb(201, 161, 109)">Page: 1</p>
-        <button class="btn" style="float: right;">Next</button>
+            <button class="btn" style="float: right;" (click)="Decrement()">Previous</button>
+            <p style="padding: 5px; background-color: #49231c; float: right; color: rgb(201, 161, 109)">Page: {{pageNumber}}</p>
+        <button class="btn" style="float: right;" (click)="Increment()">Next</button>
                     </div>
         <div class="col-8" style="margin: auto;">
             
@@ -152,9 +152,9 @@
         </div>
 <!-- buttons for pageination -->
         <div class="row col-8" style="margin: auto;">
-            <button class="btn" style="float: right;">Previous</button>
-            <p style="padding: 5px; background-color: #49231c; float: right; color: rgb(201, 161, 109)">Page: 1</p>
-        <button class="btn" style="float: right;">Next</button>
+            <button class="btn" style="float: right;" (click)="Decrement()">Previous</button>
+            <p style="padding: 5px; background-color: #49231c; float: right; color: rgb(201, 161, 109)">Page: {{pageNumber}}</p>
+        <button class="btn" style="float: right;" (click)="Increment()">Next</button>
                     </div>
 
     </div>

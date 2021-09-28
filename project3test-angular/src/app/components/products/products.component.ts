@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit {
   public searchType: any;
   public newPage: any;
   public pageNumber: any = 1;
+  public index: any = 0;
 
 
   constructor(private bookService: BooksService, private readlistService:
@@ -87,6 +88,24 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  Increment(){
+    this.index += 20;
+    this.pageNumber += 1;
+    this.Search(this.search, this.searchType)
+    console.log(this.index);
+      console.log(this.Search);
+  }
+
+  Decrement(){
+    if(this.index>=20){
+      this.index-=20;
+      this.pageNumber -= 1;
+      this.Search(this.search, this.searchType)
+      console.log(this.index);
+      console.log(this.Search);
+    }
+  }
+
 
   
   Search(search: string, searchType: string){
@@ -96,7 +115,7 @@ export class ProductsComponent implements OnInit {
 
     if (searchType === "title"){
       console.log("title SEARCH")
-      this.dataService.getBooksByTitle(search, this.pageNumber).
+      this.dataService.getBooksByTitle(search, this.index).
       subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
@@ -105,7 +124,7 @@ export class ProductsComponent implements OnInit {
 
     else if(searchType === "author"){
       console.log("author SEARCH")
-      this.dataService.getBooksByAuthor(search).subscribe((data) => {
+      this.dataService.getBooksByAuthor(search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
       })
@@ -113,7 +132,7 @@ export class ProductsComponent implements OnInit {
 
     else if(searchType === "subject"){
       console.log("subject SEARCH")
-      this.dataService.getBooksByGenre(search).subscribe((data) => {
+      this.dataService.getBooksByGenre(search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
       })
@@ -121,7 +140,7 @@ export class ProductsComponent implements OnInit {
 
     else if(searchType == "isbn"){
       console.log("ISBN SEARCH")
-      this.dataService.getBooksByISBN(search).subscribe((data) => {
+      this.dataService.getBooksByISBN(search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
       })
