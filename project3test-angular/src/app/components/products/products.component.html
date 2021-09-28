@@ -127,10 +127,14 @@
                             </td>
                             <ng-template #elsePrice1>
                                 <td class="col-price"
-                                    *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'; else elsePrice2">item
-                                    not for sale </td>
+                                    *ngIf="book.saleInfo.saleability == 'FREE'; else elsePrice2">FREE</td>
                             </ng-template>
                             <ng-template #elsePrice2>
+                                <td class="col-price"
+                                    *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'; else elsePrice3">item
+                                    not for sale </td>
+                            </ng-template>
+                            <ng-template #elsePrice3>
                                 <td class="col-price" *ngIf="book.saleInfo.retailPrice.amount"> $ {{
                                     book.saleInfo.retailPrice.amount }} </td>
                             </ng-template>
