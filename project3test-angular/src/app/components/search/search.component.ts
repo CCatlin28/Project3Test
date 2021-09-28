@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,22 +9,20 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
   search: string = '';
   searchType: string = '';
-  sortType: string = '';
-  
+  books: any;
+  message: string = "Hello!"
   constructor(private router: Router) { }
 
+  @Output() messageEvent = new EventEmitter<any>();
   ngOnInit(): void {
-    this.searchType = "title"
-    this.sortType = "Relevence"
+
   }
+
 
   Search(search: string, searchType: string){
-    this.router.navigate(['/products', search, searchType])
+    console.log("author name:" + search)
+    //this.router.navigate(['/products', search, searchType]);
+    
+    this.messageEvent.emit({search :search, searchType: searchType});
   }
-
-  Reload(){
-    window.location.reload();
-  }
-
-
 }

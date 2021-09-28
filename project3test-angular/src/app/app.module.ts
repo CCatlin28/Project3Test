@@ -62,7 +62,8 @@ import { AdvSearchComponent } from './components/adv-search/adv-search.component
     CommonModule
 
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

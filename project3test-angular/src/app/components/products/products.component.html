@@ -10,8 +10,14 @@
 
             <h1 class="text-white font-weight-bold bigger-text">Books</h1>
             <!-- <div id="outer"> -->
-            <app-search></app-search>
+            <app-search (messageEvent)="message($event)"></app-search>
+          
         </div>
+        <select (change)="sortBy($event)" class="custom-select" id="filter-select" >
+            <option value="">Sort</option>
+            <option value="1">Ascending</option>
+            <option value="2">Descending</option>
+        </select>
         <br><br>
         <!-- buttons for pageination -->
 <div class="row col-8" style="margin: auto;">
