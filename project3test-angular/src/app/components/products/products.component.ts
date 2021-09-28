@@ -126,7 +126,7 @@ export class ProductsComponent implements OnInit {
   
 
   message(event: Event){
-     console.log (event.search);
+     console.log (event);
     // console.log("hi")
     // this.search = this.route.snapshot.paramMap.get('search');
     // console.log(this.search)

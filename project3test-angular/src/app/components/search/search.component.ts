@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   message: string = "Hello!"
   constructor(private router: Router) { }
 
-  @Output() messageEvent = new EventEmitter();
+  @Output() messageEvent = new EventEmitter<any>();
   ngOnInit(): void {
 
   }

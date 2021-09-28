@@ -29,6 +29,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SortDirective } from './directive/sort.directive';
 import { SortComponent } from './components/sort/sort.component';
 import { SearchComponent } from './components/search/search.component';
+import { AdvSearchComponent } from './components/adv-search/adv-search.component';
 
 
 
@@ -48,7 +49,8 @@ import { SearchComponent } from './components/search/search.component';
     SidebarComponent,
     SortDirective,
     SortComponent,
-    SearchComponent
+    SearchComponent,
+    AdvSearchComponent
 
   ],
   imports: [
