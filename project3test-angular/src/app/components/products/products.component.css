@@ -50,13 +50,13 @@ h3 {
 }
 
 .btn {
-    color: white;
-    background-color: black;
-    border-color: white;
+    background-color: rgb(201, 161, 109); 
+    color: #49231c;
+    font-weight: bold;
 }
 
 .btn:hover {
-    background-color: gray;
+    background-color: rgb(248, 233, 221);
 }
 
 .scrollable {
