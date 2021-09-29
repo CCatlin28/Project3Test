@@ -49,10 +49,11 @@ export class ProductsComponent implements OnInit {
     
     this.dataService.getBookHomePage().subscribe((data) => {
       this.items = data.items;
-      console.log(this.items);this.items.forEach((book:any) => {
-        if(!(book.saleInfo.hasOwnProperty('listPrice'))){
+      console.log(this.items);
+      this.items.forEach((book:any) => {
+        if(!(book.saleInfo.hasOwnProperty('retailPrice'))){
           console.log("Does not exist ")   
-          Object.assign(book.saleInfo,{listPrice:{amount:10.99}})
+          Object.assign(book.saleInfo,{retailPrice:{amount:0.0}})
         }        
       })
     })
@@ -88,6 +89,18 @@ export class ProductsComponent implements OnInit {
     else if(selection === '4'){
       this.items.sort(function(a:any , b:any): any{
         if (a.volumeInfo.authors[0].toLowerCase() > b.volumeInfo.authors[0].toLowerCase())
+        return -1;
+      })
+    }
+    else if(selection === '5'){
+      this.items.sort(function(a:any , b:any): any{
+        if (a.saleInfo.retailPrice.amount > b.saleInfo.retailPrice.amount)
+        return -1;
+      })
+    }
+    else if(selection === '6'){
+      this.items.sort(function(a:any , b:any): any{
+        if (a.saleInfo.retailPrice.amount < b.saleInfo.retailPrice.amount )
         return -1;
       })
     }
@@ -134,6 +147,12 @@ export class ProductsComponent implements OnInit {
       subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
+        this.items.forEach((book:any) => {
+          if(!(book.saleInfo.hasOwnProperty('retailPrice'))){
+            console.log("Does not exist ")   
+            Object.assign(book.saleInfo,{retailPrice:{amount:0.0}})
+          }        
+        })
       })
     }
 
@@ -142,6 +161,12 @@ export class ProductsComponent implements OnInit {
       this.dataService.getBooksByAuthor(search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
+        this.items.forEach((book:any) => {
+          if(!(book.saleInfo.hasOwnProperty('retailPrice'))){
+            console.log("Does not exist ")   
+            Object.assign(book.saleInfo,{retailPrice:{amount:0.0}})
+          }        
+        })
       })
     }
 
@@ -150,6 +175,12 @@ export class ProductsComponent implements OnInit {
       this.dataService.getBooksByGenre(search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
+        this.items.forEach((book:any) => {
+          if(!(book.saleInfo.hasOwnProperty('retailPrice'))){
+            console.log("Does not exist ")   
+            Object.assign(book.saleInfo,{retailPrice:{amount:0.0}})
+          }        
+        })
       })
     }
 
@@ -158,6 +189,12 @@ export class ProductsComponent implements OnInit {
       this.dataService.getBooksByISBN(search, this.index).subscribe((data) => {
         this.items = data.items;
         console.log(this.items);
+        this.items.forEach((book:any) => {
+          if(!(book.saleInfo.hasOwnProperty('retailPrice'))){
+            console.log("Does not exist ")   
+            Object.assign(book.saleInfo,{retailPrice:{amount:0.0}})
+          }        
+        })
       })
     }
     // console.log(m[0], m[1]);
@@ -215,7 +252,7 @@ export class ProductsComponent implements OnInit {
     if (this.sortPrice == true){
       console.log("sortAsc = " +this.sortPrice);
       this.items.sort(function(a:any , b:any): any{
-        if (a.saleInfo.listPrice.amount < b.saleInfo.listPrice.amount )
+        if (a.saleInfo.retailPrice.amount < b.saleInfo.retailPrice.amount )
         return -1;
       })
       this.sortPrice = false;
@@ -223,7 +260,7 @@ export class ProductsComponent implements OnInit {
     else if(this.sortPrice == false){
       console.log("sortAsc = " +this.sortPrice);
       this.items.sort(function(a:any , b:any): any{
-        if (a.saleInfo.listPrice.amount > b.saleInfo.listPrice.amount)
+        if (a.saleInfo.retailPrice.amount > b.saleInfo.retailPrice.amount)
         return -1;
       })
       this.sortPrice = true;

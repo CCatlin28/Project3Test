@@ -24,6 +24,9 @@
                         <option value="2">Title Z-A</option>
                         <option value="3">Author A-Z</option>
                         <option value="4">Author Z-A</option>
+                        <option value="5">Price High-Low</option>
+                        <option value="6">Price Low-High</option>
+                        
                     </select>
                    
                 </div>
@@ -65,17 +68,23 @@
             
           
         </div>
-        <br>
+       <!-- <br> -->
+       <br>
       
         <!-- buttons for pageination -->
-        <div class="row col-8" style="margin: auto;">
-            <button class="btn" style="float: right;" (click)="Decrement()">Previous</button>
-            <p style="padding: 5px; background-color: #49231c; float: right; color: rgb(201, 161, 109)">Page: {{pageNumber}}</p>
+        <div class="row col-8" style="margin: auto; margin-bottom: 5px;">
+            <div class="div" style="margin-left: 75%;" >
+            <button class="btn" style="float: left;" (click)="Decrement()">Previous</button>
+            <p style="padding: 5px; background-color: #49231c; float: left; color: rgb(201, 161, 109)">Page: {{pageNumber}}</p>
         <button class="btn" style="float: right;" (click)="Increment()">Next</button>
-                    </div>
-        <div class="col-8" style="margin: auto;">
+            </div>
+        </div>
+                   
+        <div class="col-8 card" style="margin: auto;">
             
-            <div class="scrollable card">
+            <div class="scrollable card fixTableHead ">
+                <!-- <div class="scrollable card"> -->
+
                 <table class="table table-dark table-borderless tablesorter" id="booksTable">
 
                     <thead class="thead-dart">
@@ -85,8 +94,15 @@
                             <th (click)="sortByAuthor()" scope="col">Author</th>
                             <th  scope="col">ISBN</th>
                             <th (click)=" sortByPrice()" scope="col">Price</th>
+                            <th  scope="col"></th>
+                            <th  scope="col"></th>
                         </tr>
                     </thead>
+                    <!-- </table> -->
+           
+                    <!-- <div class="scrollable card"> -->
+                        <!-- <table class="table table-dark table-borderless tablesorter" id="booksTable"> -->
+                    
                     <tbody>
                         <tr *ngFor="let book of items" class="text-center">
                             <!--Book list composed of search results + page number-->
@@ -98,9 +114,10 @@
 
                             <td class="col-title">{{ book.volumeInfo.title }}</td>
 
-                            <td class="col-author" ng-container *ngIf="book.volumeInfo.authors == null else elseBlock1">
-                                Author not found</td>
-                            <ng-template #elseBlock1>{{ book.volumeInfo.authors }}</ng-template>
+                            <td class="col-author">
+                                <ng-container *ngIf="book.volumeInfo.authors == null else elseBlock1">
+                                Author not found</ng-container>
+                            <ng-template #elseBlock1>{{ book.volumeInfo.authors }}</ng-template></td>
 
                             <td class="col-isbn" ng-container
                                 *ngIf="book.volumeInfo.industryIdentifiers == null; else elseIfOther">ISBN not available</td>
@@ -122,7 +139,7 @@
                             <ng-template #elseBlock>isbn 13 is not available for this selection</ng-template>
 
 
-                            <td ng-container *ngIf="book.saleInfo == null; else elsePrice1">price unavailable
+                            <td ng-container *ngIf="book.saleInfo == null; else elsePrice1">Price Unavailable
                             </td>
                             <ng-template #elsePrice1>
                                 <td class="col-price"
@@ -130,8 +147,7 @@
                             </ng-template>
                             <ng-template #elsePrice2>
                                 <td class="col-price"
-                                    *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'; else elsePrice3">item
-                                    not for sale </td>
+                                    *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'; else elsePrice3">Out of Stock </td>
                             </ng-template>
                             <ng-template #elsePrice3>
                                 <td class="col-price" *ngIf="book.saleInfo.retailPrice.amount"> $ {{
@@ -150,15 +166,18 @@
                         </tr>
                     </tbody>
                 </table>
+                
             </div>
 
         </div>
 <!-- buttons for pageination -->
-        <div class="row col-8" style="margin: auto;">
-            <button class="btn" style="float: right;" (click)="Decrement()">Previous</button>
-            <p style="padding: 5px; background-color: #49231c; float: right; color: rgb(201, 161, 109)">Page: {{pageNumber}}</p>
+        <div class="row col-8" style="margin: auto;background-color: #49231c;">
+            <div class="div" style="margin-left: 40%;" >
+            <button class="btn" style="float: left;" (click)="Decrement()">Previous</button>
+            <p style="padding: 5px; background-color: #49231c; float: left; color: rgb(201, 161, 109)">Page: {{pageNumber}}</p>
         <button class="btn" style="float: right;" (click)="Increment()">Next</button>
-                    </div>
+            </div>
+         </div>
 
     </div>
 </div>

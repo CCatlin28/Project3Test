@@ -62,7 +62,7 @@ h3 {
 .scrollable {
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 750px;
+    min-height: 750px;
 }
 
 .menu{
@@ -70,3 +70,13 @@ h3 {
     color: #49231c;
     font-weight: bold;
 }
+
+.fixTableHead {
+    overflow-y: auto;
+    height: 110px;
+  }
+  .fixTableHead thead th {
+    position: sticky;
+    top: 0;
+    background-color: #49231c;
+  }
