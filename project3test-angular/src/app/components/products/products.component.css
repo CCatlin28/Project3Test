@@ -78,5 +78,15 @@ h3 {
   .fixTableHead thead th {
     position: sticky;
     top: 0;
+    
+  }
+
+  .sort:hover{
+      background-color: rgb(201, 161, 109); 
+      /* color: #49231c; */
+      cursor: pointer
+  }
+
+  .headerbg {
     background-color: #49231c;
   }
