@@ -4,6 +4,8 @@ import { BooksService } from 'src/app/services/books.service';
 import { DataService } from 'src/app/services/data.service';
 import { ReadlistService } from 'src/app/services/readlist.service';
 import { ActivatedRoute } from '@angular/router';
+import { IReadlist } from 'src/app/models/readlist.model';
+
 
 
 @Component({
@@ -30,6 +32,15 @@ export class ProductsComponent implements OnInit {
   public sortTitle:Boolean=true;
   public sortAuthor:Boolean=true;
   public sortPrice:Boolean=true;
+
+  public readList: IReadlist[] = [];
+  public bestSellingBooks: any[] = [];
+  public selectedBestSellers: any[] = [];
+  public viewingBestSellers: any;
+  public whichBooks: any;
+  public bookFound: any;
+
+  public bestSellerSort: Boolean=false;
 
 
   constructor(private bookService: BooksService, private readlistService:
@@ -75,6 +86,7 @@ export class ProductsComponent implements OnInit {
   }
 
   sortBy(event: Event){
+    this.bestSellerSort=false;
     let original = this.items;
     let selection = (event.target as HTMLSelectElement).value;
     if (selection === '1'){
@@ -139,6 +151,7 @@ export class ProductsComponent implements OnInit {
   }
 
   newSearch(){
+    this.bestSellerSort=false;
     this.pageNumber = 1;
     this.index = 0;
     this.Search(this.search, this.searchType)
@@ -147,6 +160,7 @@ export class ProductsComponent implements OnInit {
 
   
   Search(search: string, searchType: string){
+    this.bestSellerSort=false;
     // let searchArr :any = event;
     // let search = searchArr[0];
     // let searchType = searchArr[1];
@@ -278,5 +292,69 @@ export class ProductsComponent implements OnInit {
 
    }
 
+   getBestSeller(){
+     this.bestSellerSort=true;
+         // get all books currently being read by users
+    // set entryNum value to 0 for every book 
+    this.readlistService.getReadlist().subscribe(data => {
+      this.readList = data;
+      this.readList.forEach(readingBook => {
+        readingBook.book.entryNum = 0;
+      });
+      console.log(this.readList);
+
+      // empty out arrays before iterating
+      this.bestSellingBooks = [];
+      this.selectedBestSellers = [];
+
+      // iterate over readlist entries
+      for (let i = 0; i < this.readList.length; i++) {
+          
+          this.bookFound = false;
+          
+          if(this.bestSellingBooks.includes(this.readList[i].book === false)){
+            this.bestSellingBooks.push(this.readList[i].book);
+          } else {
+            this.readList[i].book.entryNum += 1;
+          }
+      
+          // iterate over added books
+          for (let j = 0; j < this.bestSellingBooks.length; j++) {
+          
+              // check if readlist entry book is already in array
+              // and change boolean value to true if found
+              if (this.readList[i].book.isbn == this.bestSellingBooks[j].isbn) {
+            
+                this.bookFound = true;
+          
+                // add new property to object and increment 
+                // each time book is found in array
+                this.bestSellingBooks[j].entryNum += 1;   
+              }
+          }
+
+          // if book not found (boolean value is false)
+          // add book to array
+          if (this.bookFound === false) {
+              this.bestSellingBooks.push(this.readList[i].book);
+          }
+      }
+      console.log(this.bestSellingBooks);
+      
+      // only select the book as a best seller if its being read more than once 
+      this.bestSellingBooks.forEach(book => {
+        if(book.entryNum > 1){
+          this.selectedBestSellers.push(book);
+        }
+      });
+
+      console.log(this.selectedBestSellers);
+    }, error => {
+      console.log(error);
+    });
+  }
+  public addBook(book: any) {
+    this.readlistService.addReadlistEntry(book);
+  }
 
 }
