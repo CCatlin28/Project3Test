@@ -63,6 +63,16 @@ export class ProductsComponent implements OnInit {
 
 
   
+  learnMore(book: any){
+    this.title = book.volumeInfo.title
+    this.author = book.volumeInfo.authors[0]
+    if(book.volumeInfo.industryIdentifiers == null || (book.volumeInfo.industryIdentifiers[0].type == 'OTHER')){
+      this.router.navigate(['/details', this.title, this.author])
+    }else{
+      this.router.navigate(['/detailed', book.volumeInfo.industryIdentifiers[0].identifier])
+    }
+    
+  }
 
   sortBy(event: Event){
     let original = this.items;
