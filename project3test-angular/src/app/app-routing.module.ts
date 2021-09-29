@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent},
   { path: 'products/:search/:searchType/:pageNumber', component: ProductsComponent},
   { path: 'products/:search/:searchType', component: ProductsComponent},
-  { path: 'products/:ISBN', component: BookDetailComponent},
+  { path: 'details/:title/:author', component: BookDetailComponent},
+  { path: 'detailed/:ISBN', component: BookDetailComponent},
+  
   // { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   // { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
   // { path: 'products/:catName/:catId', component: SubCategoryComponent, canActivate: [AuthGuard] },
